@@ -9,10 +9,11 @@
 <style>
 :root {
     --bg: #0B0B2A;
-    --main: #7B61FF;
+    /* เปลี่ยนสีหลัก (Main) เป็นสีม่วงสว่างนีออนตามรูปภาพ */
+    --main: #BB86FC; 
     --dark: #C084FC;
     --white: #FFFFFF;
-    --glow: rgba(123, 97, 255, 0.4);
+    --glow: rgba(187, 134, 252, 0.5); /* ปรับสี Glow ให้เข้ากัน */
     --accent: #FF71CF;
 }
 
@@ -27,7 +28,7 @@ body {
     position: relative;
 }
 
-/* --- ปรับอิโมจิพื้นหลังให้ชัดขึ้น (Opacity 0.5) --- */
+/* --- อิโมจิพื้นหลังชัดเจนกำลังดี --- */
 .bg-emojis {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -38,7 +39,7 @@ body {
 .floating-emoji {
     position: absolute;
     font-size: 22px;
-    opacity: 0.5; /* เพิ่มความชัดจากเดิมที่จางไป */
+    opacity: 0.5;
     filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
     animation: float-bg 18s infinite linear;
 }
@@ -61,10 +62,10 @@ body {
     padding: 40px 15px 30px;
 }
 
-/* --- ชื่อร้านสีขาว คลีนๆ สวยคม --- */
+/* --- ชื่อร้านสีขาว คลีนๆ --- */
 h1 { 
     color: var(--white); 
-    text-shadow: 2px 2px 8px rgba(123, 97, 255, 0.5); 
+    text-shadow: 2px 2px 8px rgba(187, 134, 252, 0.5); 
     font-size: 32px; 
     margin-bottom: 10px;
 }
@@ -104,11 +105,13 @@ h1 {
     backdrop-filter: blur(10px);
     border-radius: 25px;
     padding: 25px;
-    margin-bottom: 35px; /* เว้นระยะห่าง Section ให้ดูโปร่ง */
-    border: 1px solid rgba(123, 97, 255, 0.25);
+    margin-bottom: 40px; 
+    /* เปลี่ยนสีขอบการ์ดเป็นสีม่วงนีออน และเพิ่มความหนาเล็กน้อยเพื่อให้เรืองแสงชัดขึ้น */
+    border: 2px solid var(--main); 
+    box-shadow: 0 0 15px var(--glow); /* เพิ่ม Shadow ให้ขอบดูเรืองแสงฟุ้งๆ */
 }
 
-h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 18px; }
+h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 20px; }
 
 .badge-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 15px 0; }
 .badge {
@@ -126,17 +129,18 @@ h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 18px; }
 }
 
 .btn-outline { border: 1.5px dashed var(--accent); color: var(--white); margin: 25px 0; }
+
 .btn-main { 
     background: linear-gradient(45deg, var(--main), var(--accent)); 
     color: #fff; 
-    box-shadow: 0 4px 15px rgba(123, 97, 255, 0.3);
-    margin: 20px 0 5px; /* เพิ่มระยะห่างด้านบนไม่ให้ติดกับ Grid ผลงาน */
+    box-shadow: 0 4px 15px var(--glow);
+    margin-top: 30px; 
 }
 
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
 .card {
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(123, 97, 255, 0.15);
+    border: 1px solid rgba(187, 134, 252, 0.3); /* ปรับสีขอบการ์ดเล็กให้เข้ากัน */
     border-radius: 18px;
     padding: 10px;
     text-align: center;
@@ -145,14 +149,13 @@ h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 18px; }
 }
 .card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; margin-bottom: 8px; }
 
-/* --- Footer ปรับขนาดตัวอักษรให้เล็กลงตามบรีฟ --- */
-.footer { text-align: center; margin-top: 40px; }
+.footer { text-align: center; margin-top: 50px; }
 .contact-label { font-size: 14px; color: var(--white); font-weight: 500; margin-bottom: 12px; }
 .social-group { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
 .social-btn {
     padding: 5px 12px; border-radius: 15px;
     background: rgba(255,255,255,0.08); border: 1px solid var(--main);
-    color: #fff; text-decoration: none; font-size: 10.5px; /* ขนาดเล็กกะทัดรัด */
+    color: #fff; text-decoration: none; font-size: 10.5px;
 }
 
 </style>
@@ -220,7 +223,7 @@ h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 18px; }
                 <img src="line_oa_chat_260308_150340.jpeg"><span style="font-size:11px;">Grufay Fusom</span>
             </a>
         </div>
-        <p style="font-size:12px; text-align:center; margin-top:22px; opacity:0.8;">💰 Payment: K Bank (กสิกรไทย)</p>
+        <p style="font-size:12px; text-align:center; margin-top:25px; opacity:0.8;">💰 Payment: K Bank (กสิกรไทย)</p>
     </div>
 
     <div class="footer">
@@ -229,7 +232,7 @@ h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 18px; }
             <a href="https://www.facebook.com/fumiko.poko?" target="_blank" class="social-btn">Facebook: Fumiko Poko</a>
             <a href="https://line.me/R/ti/p/@641sfkjr" target="_blank" class="social-btn">Line: @641sfkjr</a>
         </div>
-        <p style="font-size:10px; opacity:0.5; margin-top:25px;">© 2026 Fumiko Poko | Studio Fumiko ✨🌌</p>
+        <p style="font-size:10px; opacity:0.5; margin-top:30px;">© 2026 Fumiko Poko | Studio Fumiko ✨🌌</p>
     </div>
 
 </div>
