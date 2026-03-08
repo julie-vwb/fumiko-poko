@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-/* ปรับโทนสีใหม่ตามรูปภาพ (Studio Fumiko Tone) */
 :root{
 --bg:#0B0B2A;
 --main:#7B61FF;
@@ -24,11 +23,6 @@ body{
 background:var(--bg);
 display:flex;
 justify-content:center;
-/* ใส่รูปพื้นหลังใหญ่ตามที่ระบุ */
-background-image: url('line_oa_chat_260308_150400.jpeg');
-background-size: cover;
-background-position: center;
-background-attachment: fixed;
 }
 
 .container{
@@ -38,25 +32,50 @@ padding:20px 15px 40px;
 }
 
 .section{
-background: rgba(11, 11, 42, 0.85); /* พื้นหลังใสแบบมืดเข้ากับโทนใหม่ */
-backdrop-filter: blur(10px);
+background: rgba(20, 20, 60, 0.6); 
+backdrop-filter: blur(8px);
 border-radius:20px;
 padding:25px 20px;
 margin-bottom:20px;
 box-shadow:0 8px 30px rgba(0,0,0,0.3);
 border:2px solid var(--main);
-color: #fff; /* ปรับตัวอักษรเป็นสีขาวให้อ่านง่ายขึ้น */
+color: #fff;
+}
+
+.header-bg-box {
+    background-image: url('line_oa_chat_260308_150400.jpeg'); /* รูปพื้นหลังใหญ่ */
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    padding: 30px 15px;
+    margin-bottom: 20px;
+    border: 2px solid var(--main);
+    position: relative;
+    overflow: hidden;
+}
+
+.header-bg-box::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(11, 11, 42, 0.4); 
+    z-index: 1;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
 }
 
 h1,h2,h3{color:var(--dark); text-shadow: 0 0 10px var(--glow);}
 .center{text-align:center;}
 
 .logo{
-width:150px;height:150px;
+width:140px;height:140px;
 border-radius:50%;
 overflow:hidden;
-margin:0 auto 20px;
-box-shadow:0 0 25px var(--main);
+margin:0 auto 15px;
+box-shadow:0 0 20px var(--main);
 border: 3px solid var(--white);
 }
 
@@ -66,16 +85,15 @@ border: 3px solid var(--white);
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:10px;
-margin-bottom:20px;
+gap:8px;
+margin-bottom:15px;
 }
 
 .badge{
 background:rgba(255,255,255,0.1);
-padding:8px 16px;
+padding:6px 14px;
 border-radius:25px;
-box-shadow:0 4px 15px rgba(0,0,0,0.2);
-font-size:13px;
+font-size:12px;
 color:var(--white);
 border: 1px solid var(--main);
 }
@@ -88,7 +106,6 @@ border-radius:25px;
 text-decoration:none;
 margin-top:15px;
 font-weight:500;
-transition: 0.3s;
 }
 
 .btn-outline{
@@ -100,7 +117,6 @@ color:var(--white);
 .btn-main{
 background: linear-gradient(45deg, var(--main), var(--accent));
 color:#fff;
-border: none;
 box-shadow: 0 4px 15px var(--glow);
 }
 
@@ -116,9 +132,7 @@ background:var(--main);
 color:#fff;
 width:26px;height:26px;
 border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
+display:flex; align-items:center; justify-content:center;
 font-size:13px;
 }
 
@@ -161,13 +175,12 @@ border-radius:25px;
 background:rgba(255,255,255,0.1);
 text-decoration:none;
 color:var(--white);
-font-size:13px;
+font-size:12px;
 border:1px solid var(--main);
 }
 
-.small{font-size:12px;opacity:.7;margin-top:10px; color: #fff;}
+.small{font-size:11px; opacity:.7; color: #fff; margin-top:10px;}
 
-/* ตกแต่งรูปภาพเพิ่มเติม */
 .detail-img {
     width: 100%;
     border-radius: 15px;
@@ -180,109 +193,136 @@ border:1px solid var(--main);
 <body>
 <div class="container">
 
-<div class="section center" style="border:none;box-shadow:none;background:transparent;">
+<div class="header-bg-box center">
+    <div class="header-content">
+        <div class="logo">
+            <img src="line_oa_chat_260308_150351.jpeg" alt="Fumiko Poko Logo">
+        </div>
 
-<div class="logo">
-<img src="line_oa_chat_260308_150351.jpeg" alt="Fumiko Poko Logo">
-</div>
+        <h1 style="color:#fff;">Fumiko Poko</h1>
+        <p style="color:var(--dark); margin:8px 0 15px; white-space: pre-line; font-weight: 500; font-size: 14px;">
+        Welcome to Fumiko Poko 
+        order • inbox
+        🟢 Ready for orders
+        
+        Thank you for supporting!
+        </p>
 
-<h1 style="color:#fff;">Fumiko Poko</h1>
-<p style="color:var(--dark); opacity:1; margin:10px 0 20px; white-space: pre-line; font-weight: 500;">
-Welcome to Fumiko Poko 
-order • inbox
-🟢 Ready for orders
+        <div class="badges">
+            <div class="badge">🎨 รับทำป้าย</div>
+            <div class="badge">📦 รับทำบล็อก</div>
+            <div class="badge">💡 รับคิดแนวงาน</div>
+        </div>
 
-Thank you for supporting!
-</p>
-
-<div class="badges">
-<div class="badge">🎨 รับทำป้าย</div>
-<div class="badge">📦 รับทำบล็อก</div>
-<div class="badge">💡 รับคิดแนวงาน</div>
-</div>
-
-<a href="https://ksm-bb.github.io/Fumikopoko/" target="_blank" class="btn btn-outline">
-เช็คคิวงาน ✨
-</a>
-</div>
-
-<div class="section">
-<h2>💜 รายละเอียดการสั่งงาน</h2>
-<img src="line_oa_chat_260308_192205.jpeg" alt="Detail" class="detail-img">
-<p style="font-size: 14px; text-align: center; margin-top: 10px; color: var(--accent);">
-" ทักมาขออัปเดตงานได้ แต่งดเร่ง งดจิกนะคะ "
-</p>
+        <a href="https://ksm-bb.github.io/Fumikopoko/" target="_blank" class="btn btn-outline">
+        เช็คคิวงาน ✨
+        </a>
+    </div>
 </div>
 
 <div class="section">
-<h2>🎨 ผลงานร้าน / Portfolio</h2>
-
-<div class="step">
-  <div class="step-num">🌸</div>
-  <div>
-    <a href="https://linkbio.co/fumikopoko" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 8px;">
-      <img src="line_oa_chat_260308_150323.jpeg" alt="Select toon" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover; border: 1px solid var(--main);">
-      Select Toon
-    </a>
-  </div>
-</div>
-
-<div class="step">
-  <div class="step-num">⭐</div>
-  <div>
-    <a href="https://drive.google.com/drive/folders/1-2hTMdBqNtQu01wz9I42MaHVjOGk6JgB" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 8px;">
-      <img src="line_oa_chat_260308_150326.jpeg" alt="Sign work" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover; border: 1px solid var(--main);">
-      Ex. Sign work
-    </a>
-  </div>
-</div>
-
-<div class="step">
-  <div class="step-num">📝</div>
-  <div>
-    <a href="https://drive.google.com/drive/folders/10wCHkj_mqoyXw8oNmK00_dOUgeNKykP2" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 8px;">
-      <img src="line_oa_chat_260308_150327.jpeg" alt="Block draft" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover; border: 1px solid var(--main);">
-      Ex. Block Draft
-    </a>
-  </div>
-</div>
-
-<a href="https://line.me/R/ti/p/@641sfkjr" class="btn btn-main">จองคิวสั่งงานคลิกเลย 🧸</a>
+    <h2 style="font-size: 1.2rem;">💜 รายละเอียดการสั่งงาน</h2>
+    <img src="line_oa_chat_260308_192205.jpeg" alt="Detail" class="detail-img">
+    <p style="font-size: 13px; text-align: center; margin-top: 10px; color: var(--accent);">
+    " ทักมาขออัปเดตงานได้ แต่งดเร่ง งดจิกนะคะ "
+    </p>
 </div>
 
 <div class="section">
-<h2>🤝 กลุ่มในเครือ / Collab</h2>
+    <h2 style="font-size: 1.2rem;">🎨 ผลงานร้าน / Portfolio</h2>
 
-<div class="price-row" style="align-items: center;">
-  <div style="display: flex; align-items: center; gap: 10px;">
-    <img src="line_oa_chat_260308_151002.jpeg" alt="Rainel V1" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent);">
-    <span>Rainel V1</span>
-  </div>
-  <span class="price-tag"><a href="https://shorturl.at/0hO45" target="_blank" style="color:white; text-decoration:none;">Link</a></span>
+    <div class="step">
+        <div class="step-num">🌸</div>
+        <a href="https://linkbio.co/fumikopoko" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 10px;">
+            <img src="line_oa_chat_260308_150323.jpeg" alt="Select toon" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover; border: 1px solid var(--main);">
+            <span>Select Toon</span>
+        </a>
+    </div>
+
+    <div class="step">
+        <div class="step-num">⭐</div>
+        <a href="https://drive.google.com/drive/folders/1-2hTMdBqNtQu01wz9I42MaHVjOGk6JgB" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 10px;">
+            <img src="line_oa_chat_260308_150326.jpeg" alt="Sign work" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover; border: 1px solid var(--main);">
+            <span>Ex. Sign work</span>
+        </a>
+    </div>
+
+    <div class="step">
+        <div class="step-num">📝</div>
+        <a href="https://drive.google.com/drive/folders/10wCHkj_mqoyXw8oNmK00_dOUgeNKykP2" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 10px;">
+            <img src="line_oa_chat_260308_150327.jpeg" alt="Block draft" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover; border: 1px solid var(--main);">
+            <span>Ex. Block Draft</span>
+        </a>
+    </div>
+
+    <div class="step">
+        <div class="step-num">📂</div>
+        <a href="https://drive.google.com/drive/folders/10LgobkO4-Bnqj6_7C_BHMZA5MinVgqYq" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 10px;">
+            <img src="line_oa_chat_260308_150328.jpeg" alt="Block work" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover; border: 1px solid var(--main);">
+            <span>Ex. block work</span>
+        </a>
+    </div>
+
+    <a href="https://line.me/R/ti/p/@641sfkjr" class="btn btn-main">จองคิวสั่งงานคลิกเลย 🧸</a>
 </div>
 
-<div class="price-row" style="align-items: center;">
-  <div style="display: flex; align-items: center; gap: 10px;">
-    <img src="line_oa_chat_260308_150336.jpeg" alt="FumoFumi" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent);">
-    <span>FumoFumi</span>
-  </div>
-  <span class="price-tag"><a href="https://drive.google.com/drive/folders/115OCfCvxXlwbCE3iy2KUMtHuLyVXc4wR" target="_blank" style="color:white; text-decoration:none;">Drive</a></span>
-</div>
+<div class="section">
+    <h2 style="font-size: 1.2rem;">🤝 กลุ่มในเครือ / Collab</h2>
 
-<p style="font-size:12px; color:var(--dark); margin-top:10px; text-align:center;">* รับชำระผ่าน K Bank (กสิกรไทย)</p>
+    <div class="price-row" style="align-items: center; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="line_oa_chat_260308_151002.jpeg" alt="Rainel V1" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent);">
+        <span>Rainel V1</span>
+      </div>
+      <span class="price-tag"><a href="https://shorturl.at/0hO45" target="_blank" style="color:white; text-decoration:none;">Link</a></span>
+    </div>
+
+    <div class="price-row" style="align-items: center; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="line_oa_chat_260308_150336.jpeg" alt="FumoFumi" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent);">
+        <span>FumoFumi</span>
+      </div>
+      <span class="price-tag"><a href="https://drive.google.com/drive/folders/115OCfCvxXlwbCE3iy2KUMtHuLyVXc4wR" target="_blank" style="color:white; text-decoration:none;">Drive</a></span>
+    </div>
+
+    <div class="price-row" style="align-items: center; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="line_oa_chat_260308_150338.jpeg" alt="Constellation" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent);">
+        <span>Constellation</span>
+      </div>
+      <span class="price-tag"><a href="https://shorturl.asia/Bat15" target="_blank" style="color:white; text-decoration:none;">FB</a></span>
+    </div>
+
+    <div class="price-row" style="align-items: center; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="line_oa_chat_260308_150339.jpeg" alt="Constellation of star" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent);">
+        <span>Constellation of star</span>
+      </div>
+      <span class="price-tag"><a href="https://drive.google.com/drive/folders/12zwJ3Cr5-iO2Z6UKjF6utgBdSV9kd0Wv" target="_blank" style="color:white; text-decoration:none;">Drive</a></span>
+    </div>
+
+    <div class="price-row" style="align-items: center; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="line_oa_chat_260308_150340.jpeg" alt="Grufay Fusom" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent);">
+        <span>Grufay Fusom</span>
+      </div>
+      <span class="price-tag"><a href="https://drive.google.com/drive/folders/1AktJ-cZ9CP0kJV_OfECV-930mvbmL81Y" target="_blank" style="color:white; text-decoration:none;">Drive</a></span>
+    </div>
+
+    <p style="font-size:12px; color:var(--dark); margin-top:10px; text-align:center;">* รับชำระผ่าน K Bank (กสิกรไทย)</p>
 </div>
 
 <div class="footer">
-<a href="https://line.me/R/ti/p/@641sfkjr" class="btn btn-main">Contact Line: @641sfkjr 💬</a>
+    <a href="https://line.me/R/ti/p/@641sfkjr" class="btn btn-main">Contact Line: @641sfkjr 💬</a>
 
-<div class="socials">
-<a href="https://www.facebook.com/fumiko.poko?" target="_blank">Facebook</a>
-<a href="https://line.me/R/ti/p/@641sfkjr" target="_blank">Line OA</a>
-</div>
+    <div class="socials">
+        <a href="https://www.facebook.com/fumiko.poko?" target="_blank">Facebook</a>
+        <a href="https://line.me/R/ti/p/@641sfkjr" target="_blank">Line OA</a>
+    </div>
 
-<p class="small">
-© 2026 Fumiko Poko | Studio Fumiko
-</p>
+    <p class="small">
+    © 2026 Fumiko Poko | Studio Fumiko
+    </p>
 </div>
 
 </div>
