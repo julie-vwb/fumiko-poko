@@ -9,11 +9,10 @@
 <style>
 :root {
     --bg: #0B0B2A;
-    /* เปลี่ยนสีหลัก (Main) เป็นสีม่วงสว่างนีออนตามรูปภาพ */
     --main: #BB86FC; 
     --dark: #C084FC;
     --white: #FFFFFF;
-    --glow: rgba(187, 134, 252, 0.5); /* ปรับสี Glow ให้เข้ากัน */
+    --glow: rgba(187, 134, 252, 0.5);
     --accent: #FF71CF;
 }
 
@@ -28,7 +27,6 @@ body {
     position: relative;
 }
 
-/* --- อิโมจิพื้นหลังชัดเจนกำลังดี --- */
 .bg-emojis {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -62,7 +60,6 @@ body {
     padding: 40px 15px 30px;
 }
 
-/* --- ชื่อร้านสีขาว คลีนๆ --- */
 h1 { 
     color: var(--white); 
     text-shadow: 2px 2px 8px rgba(187, 134, 252, 0.5); 
@@ -106,9 +103,9 @@ h1 {
     border-radius: 25px;
     padding: 25px;
     margin-bottom: 40px; 
-    /* เปลี่ยนสีขอบการ์ดเป็นสีม่วงนีออน และเพิ่มความหนาเล็กน้อยเพื่อให้เรืองแสงชัดขึ้น */
     border: 2px solid var(--main); 
-    box-shadow: 0 0 15px var(--glow); /* เพิ่ม Shadow ให้ขอบดูเรืองแสงฟุ้งๆ */
+    box-shadow: 0 0 15px var(--glow);
+    position: relative;
 }
 
 h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 20px; }
@@ -130,17 +127,19 @@ h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 20px; }
 
 .btn-outline { border: 1.5px dashed var(--accent); color: var(--white); margin: 25px 0; }
 
+/* --- ปรับแต่งปุ่มจองคิวสั่งงานให้อยู่ด้านล่างสุดของ Section --- */
 .btn-main { 
     background: linear-gradient(45deg, var(--main), var(--accent)); 
     color: #fff; 
     box-shadow: 0 4px 15px var(--glow);
-    margin-top: 30px; 
+    margin: 25px auto 5px; /* เพิ่มระยะห่างด้านบนให้สมดุล */
+    width: 100%;
 }
 
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
 .card {
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(187, 134, 252, 0.3); /* ปรับสีขอบการ์ดเล็กให้เข้ากัน */
+    border: 1px solid rgba(187, 134, 252, 0.3);
     border-radius: 18px;
     padding: 10px;
     text-align: center;
@@ -153,7 +152,7 @@ h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 20px; }
 .contact-label { font-size: 14px; color: var(--white); font-weight: 500; margin-bottom: 12px; }
 .social-group { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
 .social-btn {
-    padding: 5px 12px; border-radius: 15px;
+    padding: 5px 15px; border-radius: 15px;
     background: rgba(255,255,255,0.08); border: 1px solid var(--main);
     color: #fff; text-decoration: none; font-size: 10.5px;
 }
@@ -202,10 +201,26 @@ h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 20px; }
     <div class="section">
         <h2>🎨 ผลงานร้าน / Portfolio</h2>
         <div class="grid">
-            <a href="https://linkbio.co/fumikopoko" target="_blank" class="card"><img src="line_oa_chat_260308_150323.jpeg"><span style="font-size:12px;">Select Toon</span></a>
-            <a href="https://drive.google.com/drive/folders/1-2hTMdBqNtQu01wz9I42MaHVjOGk6JgB" target="_blank" class="card"><img src="line_oa_chat_260308_150326.jpeg"><span style="font-size:12px;">Ex. Sign work</span></a>
-            <a href="https://drive.google.com/drive/folders/10wCHkj_mqoyXw8oNmK00_dOUgeNKykP2" target="_blank" class="card"><img src="line_oa_chat_260308_150327.jpeg"><span style="font-size:12px;">Ex. Block Draft</span></a>
-            <a href="https://drive.google.com/drive/folders/10LgobkO4-Bnqj6_7C_BHMZA5MinVgqYq" target="_blank" class="card"><img src="line_oa_chat_260308_150328.jpeg"><span style="font-size:12px;">Ex. block work</span></a>
+            <a href="https://linkbio.co/fumikopoko" target="_blank" class="card">
+                <img src="line_oa_chat_260308_150323.jpeg">
+                <div style="font-size:12px; font-weight:500; margin-top:5px;">Select Toon 🌸</div>
+                <div style="font-size:10px; opacity:0.7;">งานแนวหลัก</div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1-2hTMdBqNtQu01wz9I42MaHVjOGk6JgB" target="_blank" class="card">
+                <img src="line_oa_chat_260308_150326.jpeg">
+                <div style="font-size:12px; font-weight:500; margin-top:5px;">Sign work ⭐</div>
+                <div style="font-size:10px; opacity:0.7;">รวมป้ายสวยๆ</div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/10wCHkj_mqoyXw8oNmK00_dOUgeNKykP2" target="_blank" class="card">
+                <img src="line_oa_chat_260308_150327.jpeg">
+                <div style="font-size:12px; font-weight:500; margin-top:5px;">Block Draft 📝</div>
+                <div style="font-size:10px; opacity:0.7;">งานดราฟสวย</div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/10LgobkO4-Bnqj6_7C_BHMZA5MinVgqYq" target="_blank" class="card">
+                <img src="line_oa_chat_260308_150328.jpeg">
+                <div style="font-size:12px; font-weight:500; margin-top:5px;">Block work 📂</div>
+                <div style="font-size:10px; opacity:0.7;">งานรวมบล็อก</div>
+            </a>
         </div>
         <a href="https://line.me/R/ti/p/@641sfkjr" class="btn btn-main">จองคิวสั่งงานคลิกเลย 🧸</a>
     </div>
@@ -232,7 +247,7 @@ h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 20px; }
             <a href="https://www.facebook.com/fumiko.poko?" target="_blank" class="social-btn">Facebook: Fumiko Poko</a>
             <a href="https://line.me/R/ti/p/@641sfkjr" target="_blank" class="social-btn">Line: @641sfkjr</a>
         </div>
-        <p style="font-size:10px; opacity:0.5; margin-top:30px;">© 2026 Fumiko Poko | Studio Fumiko ✨🌌</p>
+        <p style="font-size:10px; opacity:0.5; margin-top:35px;">© 2026 Fumiko Poko | Studio Fumiko ✨🌌</p>
     </div>
 
 </div>
