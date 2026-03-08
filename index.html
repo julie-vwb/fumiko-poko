@@ -23,6 +23,7 @@ body{
 background:var(--bg);
 display:flex;
 justify-content:center;
+color: #fff;
 }
 
 .container{
@@ -39,32 +40,13 @@ padding:25px 20px;
 margin-bottom:20px;
 box-shadow:0 8px 30px rgba(0,0,0,0.3);
 border:2px solid var(--main);
-color: #fff;
 }
 
-.header-bg-box {
-    background-image: url('line_oa_chat_260308_150400.jpeg'); /* รูปพื้นหลังใหญ่ */
-    background-size: cover;
-    background-position: center;
-    border-radius: 20px;
+/* Header Area ปรับให้ดูนุ่มนวลขึ้น */
+.header-box {
+    text-align: center;
     padding: 30px 15px;
     margin-bottom: 20px;
-    border: 2px solid var(--main);
-    position: relative;
-    overflow: hidden;
-}
-
-.header-bg-box::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(11, 11, 42, 0.4); 
-    z-index: 1;
-}
-
-.header-content {
-    position: relative;
-    z-index: 2;
 }
 
 h1,h2,h3{color:var(--dark); text-shadow: 0 0 10px var(--glow);}
@@ -75,7 +57,7 @@ width:140px;height:140px;
 border-radius:50%;
 overflow:hidden;
 margin:0 auto 15px;
-box-shadow:0 0 20px var(--main);
+box-shadow:0 0 25px var(--main);
 border: 3px solid var(--white);
 }
 
@@ -106,6 +88,7 @@ border-radius:25px;
 text-decoration:none;
 margin-top:15px;
 font-weight:500;
+transition: 0.3s;
 }
 
 .btn-outline{
@@ -120,38 +103,49 @@ color:#fff;
 box-shadow: 0 4px 15px var(--glow);
 }
 
-.step{
-display:flex;
-align-items:center;
-gap:12px;
-margin-bottom:12px;
+/* Grid Layout สำหรับตัวอย่างผลงานและกลุ่มในเครือ */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
 }
 
-.step-num{
-background:var(--main);
-color:#fff;
-width:26px;height:26px;
-border-radius:50%;
-display:flex; align-items:center; justify-content:center;
-font-size:13px;
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--main);
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s;
 }
 
-.price-row{
-display:flex;
-justify-content:space-between;
-margin-bottom:10px;
-background:rgba(255,255,255,0.05);
-padding:10px 15px;
-border-radius:15px;
-border: 1px solid rgba(123, 97, 255, 0.2);
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
 }
 
-.price-tag{
-background:var(--main);
-color:#fff;
-padding:3px 12px;
-border-radius:20px;
-font-size:14px;
+.card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 8px;
+}
+
+.card-title {
+    font-size: 13px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.card-sub {
+    font-size: 11px;
+    color: var(--dark);
+    display: block;
 }
 
 .footer{
@@ -179,8 +173,6 @@ font-size:12px;
 border:1px solid var(--main);
 }
 
-.small{font-size:11px; opacity:.7; color: #fff; margin-top:10px;}
-
 .detail-img {
     width: 100%;
     border-radius: 15px;
@@ -193,135 +185,118 @@ border:1px solid var(--main);
 <body>
 <div class="container">
 
-<div class="header-bg-box center">
-    <div class="header-content">
-        <div class="logo">
-            <img src="line_oa_chat_260308_150351.jpeg" alt="Fumiko Poko Logo">
-        </div>
-
-        <h1 style="color:#fff;">Fumiko Poko</h1>
-        <p style="color:var(--dark); margin:8px 0 15px; white-space: pre-line; font-weight: 500; font-size: 14px;">
-        Welcome to Fumiko Poko 
-        order • inbox
-        🟢 Ready for orders
-        
-        Thank you for supporting!
-        </p>
-
-        <div class="badges">
-            <div class="badge">🎨 รับทำป้าย</div>
-            <div class="badge">📦 รับทำบล็อก</div>
-            <div class="badge">💡 รับคิดแนวงาน</div>
-        </div>
-
-        <a href="https://ksm-bb.github.io/Fumikopoko/" target="_blank" class="btn btn-outline">
-        เช็คคิวงาน ✨
-        </a>
+<div class="header-box center">
+    <div class="logo">
+        <img src="line_oa_chat_260308_150351.jpeg" alt="Fumiko Poko Logo">
     </div>
+
+    <h1>Fumiko Poko 🌌</h1>
+    <p style="color:var(--dark); margin:8px 0 15px; white-space: pre-line; font-weight: 500; font-size: 14px;">
+    Welcome to Fumiko Poko 🪐
+    order • inbox 💌
+    🟢 Ready for orders ✨
+    
+    Thank you for supporting! 🧸
+    </p>
+
+    <div class="badges">
+        <div class="badge">🎨 รับทำป้าย</div>
+        <div class="badge">📦 รับทำบล็อก</div>
+        <div class="badge">💡 รับคิดแนวงาน</div>
+    </div>
+
+    <a href="https://ksm-bb.github.io/Fumikopoko/" target="_blank" class="btn btn-outline">
+    เช็คคิวงาน ✨
+    </a>
 </div>
 
 <div class="section">
-    <h2 style="font-size: 1.2rem;">💜 รายละเอียดการสั่งงาน</h2>
+    <h2>💜 รายละเอียดการสั่งงาน</h2>
     <img src="line_oa_chat_260308_192205.jpeg" alt="Detail" class="detail-img">
     <p style="font-size: 13px; text-align: center; margin-top: 10px; color: var(--accent);">
-    " ทักมาขออัปเดตงานได้ แต่งดเร่ง งดจิกนะคะ "
+    " ทักมาขออัปเดตงานได้ แต่งดเร่ง งดจิกนะคะ 🥺 "
     </p>
 </div>
 
 <div class="section">
-    <h2 style="font-size: 1.2rem;">🎨 ผลงานร้าน / Portfolio</h2>
+    <h2>🎨 ผลงานร้าน / Portfolio</h2>
+    
+    <div class="grid-container">
+        <a href="https://linkbio.co/fumikopoko" target="_blank" class="card">
+            <img src="line_oa_chat_260308_150323.jpeg" alt="Select Toon">
+            <span class="card-title">Select Toon 🌸</span>
+            <span class="card-sub">งานแนวหลัก</span>
+        </a>
 
-    <div class="step">
-        <div class="step-num">🌸</div>
-        <a href="https://linkbio.co/fumikopoko" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 10px;">
-            <img src="line_oa_chat_260308_150323.jpeg" alt="Select toon" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover; border: 1px solid var(--main);">
-            <span>Select Toon</span>
+        <a href="https://drive.google.com/drive/folders/1-2hTMdBqNtQu01wz9I42MaHVjOGk6JgB" target="_blank" class="card">
+            <img src="line_oa_chat_260308_150326.jpeg" alt="Sign work">
+            <span class="card-title">Sign work ⭐</span>
+            <span class="card-sub">รวมป้ายสวยๆ</span>
+        </a>
+
+        <a href="https://drive.google.com/drive/folders/10wCHkj_mqoyXw8oNmK00_dOUgeNKykP2" target="_blank" class="card">
+            <img src="line_oa_chat_260308_150327.jpeg" alt="Block draft">
+            <span class="card-title">Block Draft 📝</span>
+            <span class="card-sub">งานดราฟสวย</span>
+        </a>
+
+        <a href="https://drive.google.com/drive/folders/10LgobkO4-Bnqj6_7C_BHMZA5MinVgqYq" target="_blank" class="card">
+            <img src="line_oa_chat_260308_150328.jpeg" alt="Block work">
+            <span class="card-title">Block work 📂</span>
+            <span class="card-sub">งานรวมบล็อก</span>
         </a>
     </div>
 
-    <div class="step">
-        <div class="step-num">⭐</div>
-        <a href="https://drive.google.com/drive/folders/1-2hTMdBqNtQu01wz9I42MaHVjOGk6JgB" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 10px;">
-            <img src="line_oa_chat_260308_150326.jpeg" alt="Sign work" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover; border: 1px solid var(--main);">
-            <span>Ex. Sign work</span>
-        </a>
-    </div>
-
-    <div class="step">
-        <div class="step-num">📝</div>
-        <a href="https://drive.google.com/drive/folders/10wCHkj_mqoyXw8oNmK00_dOUgeNKykP2" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 10px;">
-            <img src="line_oa_chat_260308_150327.jpeg" alt="Block draft" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover; border: 1px solid var(--main);">
-            <span>Ex. Block Draft</span>
-        </a>
-    </div>
-
-    <div class="step">
-        <div class="step-num">📂</div>
-        <a href="https://drive.google.com/drive/folders/10LgobkO4-Bnqj6_7C_BHMZA5MinVgqYq" target="_blank" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 10px;">
-            <img src="line_oa_chat_260308_150328.jpeg" alt="Block work" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover; border: 1px solid var(--main);">
-            <span>Ex. block work</span>
-        </a>
-    </div>
-
-    <a href="https://line.me/R/ti/p/@641sfkjr" class="btn btn-main">จองคิวสั่งงานคลิกเลย 🧸</a>
+    <a href="https://line.me/R/ti/p/@641sfkjr" class="btn btn-main">สั่งงานทางนี้เลยจ้า ✨🧸</a>
 </div>
 
 <div class="section">
-    <h2 style="font-size: 1.2rem;">🤝 กลุ่มในเครือ / Collab</h2>
+    <h2>🤝 กลุ่มในเครือ / Collab</h2>
+    
+    <div class="grid-container">
+        <a href="https://shorturl.at/0hO45" target="_blank" class="card">
+            <img src="line_oa_chat_260308_151002.jpeg" alt="Rainel V1">
+            <span class="card-title">Rainel V1 ☁️</span>
+            <span class="card-sub">กลุ่มคุณภาพ</span>
+        </a>
 
-    <div class="price-row" style="align-items: center; gap: 10px;">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="line_oa_chat_260308_151002.jpeg" alt="Rainel V1" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent);">
-        <span>Rainel V1</span>
-      </div>
-      <span class="price-tag"><a href="https://shorturl.at/0hO45" target="_blank" style="color:white; text-decoration:none;">Link</a></span>
+        <a href="https://drive.google.com/drive/folders/115OCfCvxXlwbCE3iy2KUMtHuLyVXc4wR" target="_blank" class="card">
+            <img src="line_oa_chat_260308_150336.jpeg" alt="FumoFumi">
+            <span class="card-title">FumoFumi 💖</span>
+            <span class="card-sub">กลุ่มน่ารัก</span>
+        </a>
+
+        <a href="https://shorturl.asia/Bat15" target="_blank" class="card">
+            <img src="line_oa_chat_260308_150338.jpeg" alt="Constellation">
+            <span class="card-title">Constellation 🌌</span>
+            <span class="card-sub">Collab Work</span>
+        </a>
+
+        <a href="https://drive.google.com/drive/folders/12zwJ3Cr5-iO2Z6UKjF6utgBdSV9kd0Wv" target="_blank" class="card">
+            <img src="line_oa_chat_260308_150339.jpeg" alt="Constellation of star">
+            <span class="card-title">Star of Star ⭐</span>
+            <span class="card-sub">Drive Link</span>
+        </a>
+    </div>
+    
+    <div class="price-row" style="margin-top: 15px; border-style: dashed;">
+        <span>Grufay Fusom (Collab)</span>
+        <span class="price-tag"><a href="https://drive.google.com/drive/folders/1AktJ-cZ9CP0kJV_OfECV-930mvbmL81Y" target="_blank" style="color:#fff; text-decoration:none;">Drive ✨</a></span>
     </div>
 
-    <div class="price-row" style="align-items: center; gap: 10px;">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="line_oa_chat_260308_150336.jpeg" alt="FumoFumi" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent);">
-        <span>FumoFumi</span>
-      </div>
-      <span class="price-tag"><a href="https://drive.google.com/drive/folders/115OCfCvxXlwbCE3iy2KUMtHuLyVXc4wR" target="_blank" style="color:white; text-decoration:none;">Drive</a></span>
-    </div>
-
-    <div class="price-row" style="align-items: center; gap: 10px;">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="line_oa_chat_260308_150338.jpeg" alt="Constellation" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent);">
-        <span>Constellation</span>
-      </div>
-      <span class="price-tag"><a href="https://shorturl.asia/Bat15" target="_blank" style="color:white; text-decoration:none;">FB</a></span>
-    </div>
-
-    <div class="price-row" style="align-items: center; gap: 10px;">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="line_oa_chat_260308_150339.jpeg" alt="Constellation of star" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent);">
-        <span>Constellation of star</span>
-      </div>
-      <span class="price-tag"><a href="https://drive.google.com/drive/folders/12zwJ3Cr5-iO2Z6UKjF6utgBdSV9kd0Wv" target="_blank" style="color:white; text-decoration:none;">Drive</a></span>
-    </div>
-
-    <div class="price-row" style="align-items: center; gap: 10px;">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="line_oa_chat_260308_150340.jpeg" alt="Grufay Fusom" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent);">
-        <span>Grufay Fusom</span>
-      </div>
-      <span class="price-tag"><a href="https://drive.google.com/drive/folders/1AktJ-cZ9CP0kJV_OfECV-930mvbmL81Y" target="_blank" style="color:white; text-decoration:none;">Drive</a></span>
-    </div>
-
-    <p style="font-size:12px; color:var(--dark); margin-top:10px; text-align:center;">* รับชำระผ่าน K Bank (กสิกรไทย)</p>
+    <p style="font-size:12px; color:var(--dark); margin-top:10px; text-align:center;">💰 รับชำระผ่าน K Bank (กสิกรไทย)</p>
 </div>
 
 <div class="footer">
-    <a href="https://line.me/R/ti/p/@641sfkjr" class="btn btn-main">Contact Line: @641sfkjr 💬</a>
+    <a href="https://line.me/R/ti/p/@641sfkjr" class="btn btn-main">สอบถามได้ตลอดเลยน้า 💬✨</a>
 
     <div class="socials">
         <a href="https://www.facebook.com/fumiko.poko?" target="_blank">Facebook</a>
         <a href="https://line.me/R/ti/p/@641sfkjr" target="_blank">Line OA</a>
     </div>
 
-    <p class="small">
-    © 2026 Fumiko Poko | Studio Fumiko
+    <p style="font-size:11px; opacity:.7; margin-top:15px;">
+    © 2026 Fumiko Poko | Studio Fumiko ✨🌌
     </p>
 </div>
 
