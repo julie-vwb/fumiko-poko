@@ -27,7 +27,6 @@ body {
     position: relative;
 }
 
-/* --- อิโมจิพื้นหลังชัดเจน --- */
 .bg-emojis {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -58,104 +57,84 @@ body {
 
 .header-box {
     text-align: center;
-    padding: 40px 15px 20px;
+    padding: 40px 15px 10px;
 }
 
-/* --- ชื่อร้านสีขาว คลีน --- */
 h1 { 
     color: var(--white); 
     text-shadow: 2px 2px 8px rgba(187, 134, 252, 0.5); 
     font-size: 32px; 
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .logo-wrapper {
     position: relative;
     width: 160px; height: 160px;
-    margin: 0 auto 20px;
+    margin: 0 auto 15px;
     display: flex; align-items: center; justify-content: center;
-}
-
-.logo-glow {
-    position: absolute;
-    width: 115%; height: 115%;
-    background: var(--main);
-    border-radius: 50%;
-    filter: blur(35px);
-    opacity: 0.4;
-    animation: pulse-glow 4s infinite alternate;
 }
 
 .logo {
     width: 140px; height: 140px;
     border-radius: 50%;
     overflow: hidden;
-    position: relative;
     z-index: 5;
     border: 3px solid var(--white);
 }
 
 .logo img { width: 100%; height: 100%; object-fit: cover; }
 
-@keyframes pulse-glow { from { transform: scale(0.95); } to { transform: scale(1.05); } }
-
-/* --- ย้าย Ready for orders มาไว้ในรูปแบบปุ่มสถานะ --- */
-.status-pill {
+/* --- 1. แถบสถานะ Ready for orders (แบบหน้าจอแรกที่วงไว้) --- */
+.status-bar-pill {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1.5px solid var(--main);
+    padding: 10px 25px;
+    border-radius: 50px; /* ทรงกลมมนยาว */
     display: inline-flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1.5px solid var(--main);
-    padding: 8px 20px;
-    border-radius: 25px;
-    font-size: 13px;
     margin: 15px 0;
-    color: var(--white);
+    box-shadow: 0 0 10px var(--glow);
 }
 
 .status-dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     background: #00FF00;
     border-radius: 50%;
-    margin-right: 10px;
-    box-shadow: 0 0 8px #00FF00;
+    margin-right: 12px;
+    box-shadow: 0 0 10px #00FF00;
+    animation: blink 1.5s infinite;
 }
+
+@keyframes blink { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
 
 .section {
     background: rgba(25, 25, 70, 0.45);
     backdrop-filter: blur(10px);
     border-radius: 25px;
     padding: 25px;
-    margin-bottom: 40px; 
+    margin-bottom: 35px; 
     border: 2px solid var(--main); 
     box-shadow: 0 0 15px var(--glow);
 }
 
-h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 20px; }
+h2 { color: var(--dark); font-size: 1.1rem; margin-bottom: 15px; text-align: center; }
 
-.badge-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 10px 0; }
-.badge {
+/* --- การ์ดปุ่มกด เช็คคิวงาน --- */
+.queue-card-btn {
+    display: block;
     background: rgba(255, 255, 255, 0.05);
-    padding: 5px 12px;
+    border: 1.5px solid rgba(187, 134, 252, 0.4);
     border-radius: 15px;
-    font-size: 11px;
-    border: 1px solid var(--main);
-}
-
-.btn-main { 
-    display: block; text-align: center; padding: 14px;
-    border-radius: 25px; text-decoration: none;
-    font-weight: 500; transition: 0.3s;
-    background: linear-gradient(45deg, var(--main), var(--accent)); 
-    color: #fff; 
-    box-shadow: 0 4px 15px var(--glow);
-    margin: 25px auto 5px;
-    width: 100%;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    margin-top: 10px;
 }
 
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
 
-/* --- การ์ดรูปแบบใหม่สำหรับเช็คคิวงาน --- */
 .card {
     background: rgba(255, 255, 255, 0.05);
     border: 1.5px solid rgba(187, 134, 252, 0.3);
@@ -164,18 +143,30 @@ h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 20px; }
     text-align: center;
     text-decoration: none;
     color: #fff;
-    transition: 0.3s;
 }
-.card:hover { border-color: var(--main); transform: translateY(-3px); }
 .card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; margin-bottom: 8px; }
 
-.footer { text-align: center; margin-top: 50px; }
-.contact-label { font-size: 14px; color: var(--white); font-weight: 500; margin-bottom: 12px; }
-.social-group { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+/* --- 2. ปุ่มติดต่อสั่งงาน (แบบหน้าจอสุดท้ายที่วงไว้) --- */
+.footer { text-align: center; padding-top: 10px; }
+
+.btn-contact-pill { 
+    background: linear-gradient(90deg, #BB86FC, #FF71CF); /* ไล่สีม่วง-ชมพู */
+    color: #fff; 
+    display: block;
+    padding: 16px;
+    border-radius: 50px; /* ทรงกลมมนยาวแบบหน้าจอสุดท้าย */
+    text-decoration: none;
+    font-weight: 500;
+    box-shadow: 0 5px 20px var(--glow);
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.social-group { display: flex; gap: 10px; justify-content: center; margin: 20px 0; }
 .social-btn {
-    padding: 5px 15px; border-radius: 15px;
+    padding: 8px 18px; border-radius: 20px;
     background: rgba(255,255,255,0.08); border: 1px solid var(--main);
-    color: #fff; text-decoration: none; font-size: 10.5px;
+    color: #fff; text-decoration: none; font-size: 11px;
 }
 
 </style>
@@ -185,55 +176,34 @@ h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 20px; }
 
 <div class="bg-emojis">
     <span class="floating-emoji" style="left: 10%;">✨</span>
-    <span class="floating-emoji" style="left: 30%;">🪐</span>
-    <span class="floating-emoji" style="left: 55%;">💫</span>
-    <span class="floating-emoji" style="left: 75%;">🧸</span>
-    <span class="floating-emoji" style="left: 90%;">🌸</span>
+    <span class="floating-emoji" style="left: 35%;">🪐</span>
+    <span class="floating-emoji" style="left: 60%;">💫</span>
+    <span class="floating-emoji" style="left: 85%;">🧸</span>
 </div>
 
 <div class="container">
 
     <div class="header-box">
         <div class="logo-wrapper">
-            <div class="logo-glow"></div>
             <div class="logo"><img src="line_oa_chat_260308_150351.jpeg" alt="Logo"></div>
         </div>
         <h1>Fumiko Poko</h1>
         
-        <div class="status-pill">
+        <div class="status-bar-pill">
             <div class="status-dot"></div>
-            Ready for orders
+            <span style="font-size: 14px; font-weight: 400;">● พร้อมรับออเดอร์อยู่นะคะ 🎀</span>
         </div>
 
-        <p style="margin-top: 10px; font-size: 13px; color: var(--dark); opacity: 0.9;">
-            Welcome to Fumiko Poko • order • inbox
-        </p>
-
-        <div class="badge-group">
-            <span class="badge">🎨 รับทำป้าย</span>
-            <span class="badge">📦 รับทำบล็อก</span>
-            <span class="badge">💡 รับคิดแนวงาน</span>
-        </div>
+        <p style="font-size: 13px; color: var(--dark); opacity: 0.9; margin-top: 5px;">Welcome to Fumiko Poko • order • inbox</p>
     </div>
 
     <div class="section">
         <h2>—⁺˖°ʚ Detail​ °⁺˖—​</h2>
-        <img src="line_oa_chat_260308_192205.jpeg" alt="Detail" style="width:100%; border-radius:15px; border:1px solid var(--main);">
-    </div>
-
-    <div class="section">
-        <h2>🚀 บริการและสถานะงาน</h2>
-        <div class="grid">
-            <a href="https://ksm-bb.github.io/Fumikopoko/" target="_blank" class="card">
-                <img src="line_oa_chat_260308_150327.jpeg"> <div style="font-size:12px; font-weight:500; margin-top:5px; color: var(--main);">เช็คคิวงาน ✨</div>
-                <div style="font-size:10px; opacity:0.7;">อัปเดตสถานะล่าสุด</div>
-            </a>
-            <div class="card" style="opacity: 0.8; border-style: dashed;">
-                <img src="line_oa_chat_260308_150340.jpeg" style="filter: grayscale(1);">
-                <div style="font-size:12px; font-weight:500; margin-top:5px;">งานทั่วไป</div>
-                <div style="font-size:10px; opacity:0.7;">Coming Soon</div>
-            </div>
-        </div>
+        <img src="line_oa_chat_260308_192205.jpeg" alt="Detail" style="width:100%; border-radius:15px;">
+        
+        <a href="https://ksm-bb.github.io/Fumikopoko/" target="_blank" class="queue-card-btn">
+            <div style="font-size: 14px; font-weight: 500;">เช็คคิวงาน คลิ๊ก ✨</div>
+        </a>
     </div>
 
     <div class="section">
@@ -241,46 +211,38 @@ h2 { color: var(--dark); font-size: 1.2rem; margin-bottom: 20px; }
         <div class="grid">
             <a href="https://linkbio.co/fumikopoko" target="_blank" class="card">
                 <img src="line_oa_chat_260308_150323.jpeg">
-                <div style="font-size:12px; font-weight:500; margin-top:5px;">Select Toon 🌸</div>
-                <div style="font-size:10px; opacity:0.7;">งานแนวหลัก</div>
+                <div style="font-size:11px; font-weight:500;">Select Toon 🌸</div>
+                <div style="font-size:9px; opacity:0.6;">งานแนวหลัก</div>
             </a>
             <a href="https://drive.google.com/drive/folders/1-2hTMdBqNtQu01wz9I42MaHVjOGk6JgB" target="_blank" class="card">
                 <img src="line_oa_chat_260308_150326.jpeg">
-                <div style="font-size:12px; font-weight:500; margin-top:5px;">Sign work ⭐</div>
-                <div style="font-size:10px; opacity:0.7;">รวมป้ายสวยๆ</div>
+                <div style="font-size:11px; font-weight:500;">Sign work ⭐</div>
+                <div style="font-size:9px; opacity:0.6;">รวมป้ายสวยๆ</div>
             </a>
             <a href="https://drive.google.com/drive/folders/10wCHkj_mqoyXw8oNmK00_dOUgeNKykP2" target="_blank" class="card">
                 <img src="line_oa_chat_260308_150327.jpeg">
-                <div style="font-size:12px; font-weight:500; margin-top:5px;">Block Draft 📝</div>
-                <div style="font-size:10px; opacity:0.7;">งานดราฟสวย</div>
+                <div style="font-size:11px; font-weight:500;">Block Draft 📝</div>
+                <div style="font-size:9px; opacity:0.6;">งานดราฟสวย</div>
             </a>
             <a href="https://drive.google.com/drive/folders/10LgobkO4-Bnqj6_7C_BHMZA5MinVgqYq" target="_blank" class="card">
                 <img src="line_oa_chat_260308_150328.jpeg">
-                <div style="font-size:12px; font-weight:500; margin-top:5px;">Block work 📂</div>
-                <div style="font-size:10px; opacity:0.7;">งานรวมบล็อก</div>
+                <div style="font-size:11px; font-weight:500;">Block work 📂</div>
+                <div style="font-size:9px; opacity:0.6;">งานรวมบล็อก</div>
             </a>
         </div>
-        <a href="https://line.me/R/ti/p/@641sfkjr" class="btn-main">สั่งงานทางนี้เลยจ้า ✨🧸</a>
-    </div>
-
-    <div class="section">
-        <h2>🤝 กลุ่มในเครือ / Collab</h2>
-        <div class="grid">
-            <a href="https://shorturl.at/0hO45" target="_blank" class="card"><img src="line_oa_chat_260308_151002.jpeg"><span style="font-size:11px;">Rainel V1</span></a>
-            <a href="https://drive.google.com/drive/folders/115OCfCvxXlwbCE3iy2KUMtHuLyVXc4wR" target="_blank" class="card"><img src="line_oa_chat_260308_150336.jpeg"><span style="font-size:11px;">FumoFumi</span></a>
-            <a href="https://shorturl.asia/Bat15" target="_blank" class="card"><img src="line_oa_chat_260308_150338.jpeg"><span style="font-size:11px;">Constellation</span></a>
-            <a href="https://drive.google.com/drive/folders/12zwJ3Cr5-iO2Z6UKjF6utgBdSV9kd0Wv" target="_blank" class="card"><img src="line_oa_chat_260308_150339.jpeg"><span style="font-size:11px;">Constellation of star</span></a>
-        </div>
-        <p style="font-size:12px; text-align:center; margin-top:25px; opacity:0.8;">💰 Payment: K Bank (กสิกรไทย)</p>
     </div>
 
     <div class="footer">
-        <p class="contact-label">Contact • FUMIKO</p>
+        <a href="https://line.me/R/ti/p/@641sfkjr" class="btn-contact-pill">
+            💝 ติดต่อสั่งงาน
+            <div style="font-size: 10px; font-weight: 300; opacity: 0.9; margin-top: 2px;">พร้อมรับทำงานคุณแล้วค่ะ!</div>
+        </a>
+
         <div class="social-group">
-            <a href="https://www.facebook.com/fumiko.poko?" target="_blank" class="social-btn">Facebook: Fumiko Poko</a>
+            <a href="https://www.facebook.com/fumiko.poko?" target="_blank" class="social-btn">Facebook</a>
             <a href="https://line.me/R/ti/p/@641sfkjr" target="_blank" class="social-btn">Line: @641sfkjr</a>
         </div>
-        <p style="font-size:10px; opacity:0.5; margin-top:35px;">© 2026 Fumiko Poko | Studio Fumiko ✨🌌</p>
+        <p style="font-size:10px; opacity:0.4; margin-top:10px;">© 2026 Fumiko Poko | Studio Fumiko ✨🌌</p>
     </div>
 
 </div>
