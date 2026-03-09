@@ -27,6 +27,7 @@ body {
     position: relative;
 }
 
+/* --- อิโมจิฟุ้งๆ ลอยทั่วพื้นหลัง --- */
 .bg-emojis {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -36,15 +37,14 @@ body {
 
 .floating-emoji {
     position: absolute;
-    font-size: 22px;
-    opacity: 0.5;
-    filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
-    animation: float-bg 18s infinite linear;
+    font-size: 20px;
+    opacity: 0.4;
+    animation: float-random 20s infinite linear;
 }
 
-@keyframes float-bg {
-    0% { transform: translateY(110vh) rotate(0deg); }
-    100% { transform: translateY(-10vh) rotate(360deg); }
+@keyframes float-random {
+    0% { transform: translateY(110vh) translateX(0) rotate(0deg); }
+    100% { transform: translateY(-10vh) translateX(20px) rotate(360deg); }
 }
 
 .container {
@@ -60,18 +60,23 @@ body {
     padding: 40px 15px 10px;
 }
 
-h1 { 
-    color: var(--white); 
-    text-shadow: 2px 2px 8px rgba(187, 134, 252, 0.5); 
-    font-size: 32px; 
-    margin-bottom: 5px;
-}
-
+/* --- โลโก้พร้อมอิโมจิลอยรอบๆ --- */
 .logo-wrapper {
     position: relative;
-    width: 160px; height: 160px;
+    width: 180px; height: 180px;
     margin: 0 auto 15px;
     display: flex; align-items: center; justify-content: center;
+}
+
+.logo-emoji {
+    position: absolute;
+    font-size: 24px;
+    animation: orbit 6s infinite linear;
+}
+
+@keyframes orbit {
+    from { transform: rotate(0deg) translateX(85px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(85px) rotate(-360deg); }
 }
 
 .logo {
@@ -80,20 +85,27 @@ h1 {
     overflow: hidden;
     z-index: 5;
     border: 3px solid var(--white);
+    box-shadow: 0 0 20px var(--glow);
 }
 
 .logo img { width: 100%; height: 100%; object-fit: cover; }
 
-/* --- 1. แถบสถานะ Ready for orders (แบบวงกลมหน้าจอแรก) --- */
-.status-bar-pill {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1.5px solid var(--main);
-    padding: 10px 25px;
+h1 { 
+    color: var(--white); 
+    text-shadow: 2px 2px 8px var(--glow); 
+    font-size: 32px; 
+    margin-bottom: 5px;
+}
+
+/* --- แถบสถานะ Ready for orders (แบบที่ต้องการ) --- */
+.status-pill-dashed {
+    border: 1.5px dashed var(--main);
+    padding: 10px 30px;
     border-radius: 50px;
     display: inline-flex;
     align-items: center;
+    background: rgba(187, 134, 252, 0.05);
     margin: 15px 0;
-    box-shadow: 0 0 10px var(--glow);
 }
 
 .status-dot {
@@ -129,8 +141,8 @@ h1 {
 
 h2 { color: var(--dark); font-size: 1.1rem; margin-bottom: 15px; text-align: center; }
 
-/* --- ปุ่มเช็คคิวงาน --- */
-.queue-card-btn {
+/* --- การ์ดเช็คคิวงาน --- */
+.queue-btn {
     display: block;
     background: rgba(255, 255, 255, 0.05);
     border: 1.5px solid rgba(187, 134, 252, 0.4);
@@ -152,13 +164,11 @@ h2 { color: var(--dark); font-size: 1.1rem; margin-bottom: 15px; text-align: cen
     text-align: center;
     text-decoration: none;
     color: #fff;
-    transition: 0.3s;
 }
-.card:hover { transform: scale(1.02); border-color: var(--main); }
 .card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; margin-bottom: 8px; }
 
-/* --- 2. ปุ่มติดต่อสั่งงาน (แบบหน้าจอสุดท้ายที่วงไว้) --- */
-.footer { text-align: center; padding-top: 10px; }
+/* --- ปุ่มติดต่อสั่งงาน (แบบหน้าจอสุดท้าย) --- */
+.footer { text-align: center; }
 
 .btn-contact-pill { 
     background: linear-gradient(90deg, #BB86FC, #FF71CF); 
@@ -170,7 +180,6 @@ h2 { color: var(--dark); font-size: 1.1rem; margin-bottom: 15px; text-align: cen
     font-weight: 500;
     box-shadow: 0 5px 20px var(--glow);
     margin-bottom: 25px;
-    font-size: 16px;
 }
 
 .social-group { display: flex; gap: 10px; justify-content: center; margin: 20px 0; }
@@ -186,31 +195,36 @@ h2 { color: var(--dark); font-size: 1.1rem; margin-bottom: 15px; text-align: cen
 <body>
 
 <div class="bg-emojis">
-    <span class="floating-emoji" style="left: 10%;">✨</span>
-    <span class="floating-emoji" style="left: 35%;">🪐</span>
-    <span class="floating-emoji" style="left: 60%;">💫</span>
-    <span class="floating-emoji" style="left: 85%;">🧸</span>
+    <span class="floating-emoji" style="left: 5%; animation-delay: 0s;">🌸</span>
+    <span class="floating-emoji" style="left: 20%; animation-delay: 2s;">✨</span>
+    <span class="floating-emoji" style="left: 45%; animation-delay: 5s;">🪐</span>
+    <span class="floating-emoji" style="left: 70%; animation-delay: 1s;">💫</span>
+    <span class="floating-emoji" style="left: 90%; animation-delay: 3s;">🧸</span>
 </div>
 
 <div class="container">
 
     <div class="header-box">
         <div class="logo-wrapper">
+            <span class="logo-emoji" style="animation-delay: 0s;">✨</span>
+            <span class="logo-emoji" style="animation-delay: -2s;">🌸</span>
+            <span class="logo-emoji" style="animation-delay: -4s;">💫</span>
             <div class="logo"><img src="line_oa_chat_260308_150351.jpeg" alt="Logo"></div>
         </div>
+        
         <h1>Fumiko Poko</h1>
         
-        <div class="status-bar-pill">
-            <div class="status-dot"></div>
-            <span style="font-size: 14px;">Ready for orders</span>
-        </div>
-
         <p style="white-space: pre-line; font-size: 13px; color: var(--dark); line-height: 1.6;">
             Welcome to Fumiko Poko 
             order • inbox
             
             Thank you for supporting!
         </p>
+
+        <div class="status-pill-dashed">
+            <div class="status-dot"></div>
+            <span style="font-size: 14px;">● พร้อมรับออเดอร์อยู่นะคะ 🎀</span>
+        </div>
 
         <div class="badge-group">
             <span class="badge">🎨 รับทำป้าย</span>
@@ -224,9 +238,9 @@ h2 { color: var(--dark); font-size: 1.1rem; margin-bottom: 15px; text-align: cen
         <img src="line_oa_chat_260308_192205.jpeg" alt="Detail" style="width:100%; border-radius:15px; margin-bottom: 10px;">
         <p style="text-align: center; font-size: 12px; opacity: 0.8;">แนวรูปรายละเอียดการสั่ง</p>
         
-        <a href="https://ksm-bb.github.io/Fumikopoko/" target="_blank" class="queue-card-btn">
+        <a href="https://ksm-bb.github.io/Fumikopoko/" target="_blank" class="queue-btn">
             <div style="font-size: 14px; font-weight: 500;">เช็คคิวงาน ✨</div>
-            <div style="font-size: 11px; opacity: 0.6;">Link : ksm-bb.github.io/Fumikopoko</div>
+            <div style="font-size: 10px; opacity: 0.6;">Link : ksm-bb.github.io/Fumikopoko</div>
         </a>
     </div>
 
@@ -236,22 +250,18 @@ h2 { color: var(--dark); font-size: 1.1rem; margin-bottom: 15px; text-align: cen
             <a href="https://linkbio.co/fumikopoko" target="_blank" class="card">
                 <img src="line_oa_chat_260308_150323.jpeg">
                 <div style="font-size:11px; font-weight:500;">Select Toon 🌸</div>
-                <div style="font-size:9px; opacity:0.6;">งานแนวหลัก</div>
             </a>
             <a href="https://drive.google.com/drive/folders/1-2hTMdBqNtQu01wz9I42MaHVjOGk6JgB" target="_blank" class="card">
                 <img src="line_oa_chat_260308_150326.jpeg">
                 <div style="font-size:11px; font-weight:500;">Ex. Sign work ⭐</div>
-                <div style="font-size:9px; opacity:0.6;">รวมป้ายสวยๆ</div>
             </a>
             <a href="https://drive.google.com/drive/folders/10wCHkj_mqoyXw8oNmK00_dOUgeNKykP2" target="_blank" class="card">
                 <img src="line_oa_chat_260308_150327.jpeg">
                 <div style="font-size:11px; font-weight:500;">Ex. Block Draft 📝</div>
-                <div style="font-size:9px; opacity:0.6;">งานดราฟสวย</div>
             </a>
             <a href="https://drive.google.com/drive/folders/10LgobkO4-Bnqj6_7C_BHMZA5MinVgqYq" target="_blank" class="card">
                 <img src="line_oa_chat_260308_150328.jpeg">
                 <div style="font-size:11px; font-weight:500;">Ex. block work 📂</div>
-                <div style="font-size:9px; opacity:0.6;">งานรวมบล็อก</div>
             </a>
         </div>
     </div>
