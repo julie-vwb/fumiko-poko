@@ -13,7 +13,7 @@
     --dark: #C084FC;
     --white: #FFFFFF;
     --glow: rgba(187, 134, 252, 0.5);
-    --accent: #FF71CF;
+    --soft-pink: #FFD1E8;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Mitr', sans-serif; }
@@ -27,24 +27,22 @@ body {
     position: relative;
 }
 
-/* --- อิโมจิพื้นหลังลอยฟุ้งทั่วหน้าจอ --- */
+/* --- อิโมจิฟุ้งๆ ทั่วพื้นหลัง --- */
 .bg-emojis {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: -1;
     pointer-events: none;
 }
-
 .floating-emoji {
     position: absolute;
     font-size: 20px;
     opacity: 0.4;
     animation: float-random 20s infinite linear;
 }
-
 @keyframes float-random {
-    0% { transform: translateY(110vh) translateX(0) rotate(0deg); }
-    100% { transform: translateY(-10vh) translateX(20px) rotate(360deg); }
+    0% { transform: translateY(110vh) rotate(0deg); }
+    100% { transform: translateY(-10vh) rotate(360deg); }
 }
 
 .container {
@@ -55,261 +53,189 @@ body {
     z-index: 1;
 }
 
-.header-box {
-    text-align: center;
-    padding: 40px 15px 10px;
-}
-
-/* --- ส่วนโลโก้พร้อมอิโมจิขึ้น-ลงฟุ้งๆ --- */
+/* --- ส่วนโลโก้พร้อมอิโมจิขึ้นลง --- */
+.header-box { text-align: center; padding: 40px 15px 10px; }
 .logo-wrapper {
     position: relative;
-    width: 180px; height: 180px;
+    width: 160px; height: 160px;
     margin: 0 auto 15px;
     display: flex; align-items: center; justify-content: center;
 }
-
 .logo-emoji {
     position: absolute;
-    font-size: 24px;
-    filter: drop-shadow(0 0 5px var(--glow));
-    /* ปรับเป็น Animation ขึ้น-ลง ฟุ้งๆ */
+    font-size: 22px;
     animation: float-up-down 3s infinite ease-in-out;
 }
-
 @keyframes float-up-down {
-    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
-    50% { transform: translateY(-15px) rotate(10deg); opacity: 1; }
+    0%, 100% { transform: translateY(0px); opacity: 0.6; }
+    50% { transform: translateY(-15px); opacity: 1; }
 }
-
 .logo {
-    width: 140px; height: 140px;
+    width: 130px; height: 130px;
     border-radius: 50%;
     overflow: hidden;
     z-index: 5;
     border: 3px solid var(--white);
     box-shadow: 0 0 20px var(--glow);
 }
-
 .logo img { width: 100%; height: 100%; object-fit: cover; }
 
-h1 { 
-    color: var(--white); 
-    text-shadow: 2px 2px 8px var(--glow); 
-    font-size: 32px; 
-    margin-bottom: 5px;
-}
+h1 { font-size: 32px; text-shadow: 2px 2px 8px var(--glow); margin-bottom: 5px; }
 
-/* --- Ready for orders แบบเส้นประ + จุดกะพริบ --- */
-.status-pill-dashed {
-    border: 1.5px dashed var(--main);
-    padding: 10px 30px;
-    border-radius: 50px;
-    display: inline-flex;
-    align-items: center;
-    background: rgba(187, 134, 252, 0.05);
-    margin: 15px 0;
-}
-
-.status-dot {
-    width: 12px;
-    height: 12px;
-    background: #00FF00;
-    border-radius: 50%;
-    margin-right: 12px;
-    box-shadow: 0 0 10px #00FF00;
-    animation: blink 1.5s infinite;
-}
-
-@keyframes blink { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
-
-.badge-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 15px 0; }
-.badge {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 5px 12px;
+/* --- แถบสถานะแบบใหม่ (ตามภาพ 7, 8) --- */
+.status-container {
+    background: #fff;
+    border: 2px dashed #FFB7D5;
     border-radius: 15px;
-    font-size: 11px;
-    border: 1px solid var(--main);
+    padding: 12px 20px;
+    display: inline-block;
+    margin: 15px 0;
+    color: #FF71CF;
+    font-size: 14px;
+    font-weight: 500;
 }
+.status-dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    background: #4ADE80;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 8px #4ADE80;
+}
+
+/* --- การ์ดรายการ Payment & Contact (ตามภาพ 9) --- */
+.info-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.info-card:hover { transform: translateX(5px); }
+.info-icon {
+    width: 45px; height: 45px;
+    border-radius: 12px;
+    margin-right: 15px;
+    display: flex; align-items: center; justify-content: center;
+    background: #f0f0f0;
+}
+.info-content { text-align: left; }
+.info-title { color: #FF4191; font-weight: 500; font-size: 15px; }
+.info-sub { color: #888; font-size: 11px; }
 
 .section {
     background: rgba(25, 25, 70, 0.45);
     backdrop-filter: blur(10px);
     border-radius: 25px;
     padding: 25px;
-    margin-bottom: 35px; 
-    border: 2px solid var(--main); 
-    box-shadow: 0 0 15px var(--glow);
+    margin-bottom: 30px;
+    border: 2px solid var(--main);
 }
-
-h2 { color: var(--dark); font-size: 1.1rem; margin-bottom: 15px; text-align: center; }
-
-.queue-btn {
-    display: block;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1.5px solid rgba(187, 134, 252, 0.4);
-    border-radius: 15px;
-    padding: 15px;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    margin-top: 15px;
-}
-
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
-
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .card {
     background: rgba(255, 255, 255, 0.05);
-    border: 1.5px solid rgba(187, 134, 252, 0.3);
+    border: 1px solid var(--main);
     border-radius: 18px;
     padding: 10px;
     text-align: center;
     text-decoration: none;
     color: #fff;
 }
-.card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; margin-bottom: 8px; }
-
-.footer { text-align: center; }
-
-.btn-contact-pill { 
-    background: linear-gradient(90deg, #BB86FC, #FF71CF); 
-    color: #fff; 
-    display: block;
-    padding: 16px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    box-shadow: 0 5px 20px var(--glow);
-    margin-bottom: 25px;
-}
-
-.social-group { display: flex; gap: 10px; justify-content: center; margin: 20px 0; }
-.social-btn {
-    padding: 8px 18px; border-radius: 20px;
-    background: rgba(255,255,255,0.08); border: 1px solid var(--main);
-    color: #fff; text-decoration: none; font-size: 11px;
-}
+.card img { width: 100%; border-radius: 12px; margin-bottom: 8px; }
 
 </style>
 </head>
-
 <body>
 
 <div class="bg-emojis">
-    <span class="floating-emoji" style="left: 5%; animation-delay: 0s;">🌸</span>
-    <span class="floating-emoji" style="left: 20%; animation-delay: 2s;">✨</span>
-    <span class="floating-emoji" style="left: 45%; animation-delay: 5s;">🪐</span>
-    <span class="floating-emoji" style="left: 70%; animation-delay: 1s;">💫</span>
-    <span class="floating-emoji" style="left: 90%; animation-delay: 3s;">🧸</span>
+    <span class="floating-emoji" style="left: 10%;">🌸</span>
+    <span class="floating-emoji" style="left: 40%;">✨</span>
+    <span class="floating-emoji" style="left: 80%;">🪐</span>
 </div>
 
 <div class="container">
 
     <div class="header-box">
         <div class="logo-wrapper">
-            <span class="logo-emoji" style="top: -20px; left: 10px; animation-delay: 0s;">✨</span>
-            <span class="logo-emoji" style="top: 20px; right: -15px; animation-delay: -0.5s;">🌸</span>
-            <span class="logo-emoji" style="bottom: 10px; right: -20px; animation-delay: -1s;">💫</span>
-            <span class="logo-emoji" style="bottom: -15px; left: 30px; animation-delay: -1.5s;">🪐</span>
-            <span class="logo-emoji" style="bottom: 40px; left: -25px; animation-delay: -2s;">🧸</span>
-            
-            <div class="logo"><img src="line_oa_chat_260308_150351.jpeg" alt="Logo"></div>
+            <span class="logo-emoji" style="top: -10px; left: 0;">✨</span>
+            <span class="logo-emoji" style="bottom: 0; right: -10px; animation-delay: 1s;">🌸</span>
+            <div class="logo"><img src="line_oa_chat_260308_150351.jpeg"></div>
         </div>
-        
         <h1>Fumiko Poko</h1>
         
-        <p style="white-space: pre-line; font-size: 13px; color: var(--dark); line-height: 1.6;">
+        <p style="font-size: 13px; color: var(--dark); line-height: 1.6; white-space: pre-line;">
             Welcome to Fumiko Poko 
             order • inbox
-            
             Thank you for supporting!
         </p>
 
-        <div class="status-pill-dashed">
-            <div class="status-dot"></div>
-            <span style="font-size: 14px;">● Ready for orders 🎀</span>
-        </div>
-
-        <div class="badge-group">
-            <span class="badge">🎨 รับทำป้าย</span>
-            <span class="badge">📦 รับทำบล็อก</span>
-            <span class="badge">💡 รับคิดแนวงาน</span>
+        <div class="status-container">
+            <span class="status-dot"></span>
+            พร้อมรับออเดอร์อยู่นะคะ 🎀
         </div>
     </div>
 
     <div class="section">
-        <h2>—⁺˖°ʚ Detail​ °⁺˖—​</h2>
-        <img src="line_oa_chat_260308_192205.jpeg" alt="Detail" style="width:100%; border-radius:15px; margin-bottom: 10px;">
-        <p style="text-align: center; font-size: 12px; opacity: 0.8;">แนวรูปรายละเอียดการสั่ง</p>
-        
-        <a href="https://ksm-bb.github.io/Fumikopoko/" target="_blank" class="queue-btn">
-            <div style="font-size: 14px; font-weight: 500;">เช็คคิวงาน ✨</div>
-            <div style="font-size: 10px; opacity: 0.6;">Link : ksm-bb.github.io/Fumikopoko</div>
+        <h2 style="text-align:center; margin-bottom:15px; color:var(--dark);">🎨 ผลงานร้าน / Portfolio</h2>
+        <div class="grid">
+            <a href="https://linkbio.co/fumikopoko" class="card">
+                <img src="line_oa_chat_260308_150323.jpeg">
+                <div style="font-size:11px;">Select Toon 🌸</div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1-2hTMdBqNtQu01wz9I42MaHVjOGk6JgB" class="card">
+                <img src="line_oa_chat_260308_150326.jpeg">
+                <div style="font-size:11px;">Ex. Sign work ⭐</div>
+            </a>
+        </div>
+        <a href="https://ksm-bb.github.io/Fumikopoko/" style="display:block; background: linear-gradient(90deg, #BB86FC, #FF71CF); padding:15px; border-radius:50px; text-decoration:none; color:#fff; text-align:center; margin-top:20px; font-weight:500;">
+            จองคิวสั่งงานคลิกเลย 🧸
         </a>
     </div>
 
     <div class="section">
-        <h2>🎨 ผลงานร้าน / Portfolio</h2>
-        <div class="grid">
-            <a href="https://linkbio.co/fumikopoko" target="_blank" class="card">
-                <img src="line_oa_chat_260308_150323.jpeg">
-                <div style="font-size:11px; font-weight:500;">Select Toon 🌸</div>
-            </a>
-            <a href="https://drive.google.com/drive/folders/1-2hTMdBqNtQu01wz9I42MaHVjOGk6JgB" target="_blank" class="card">
-                <img src="line_oa_chat_260308_150326.jpeg">
-                <div style="font-size:11px; font-weight:500;">Ex. Sign work ⭐</div>
-            </a>
-            <a href="https://drive.google.com/drive/folders/10wCHkj_mqoyXw8oNmK00_dOUgeNKykP2" target="_blank" class="card">
-                <img src="line_oa_chat_260308_150327.jpeg">
-                <div style="font-size:11px; font-weight:500;">Ex. Block Draft 📝</div>
-            </a>
-            <a href="https://drive.google.com/drive/folders/10LgobkO4-Bnqj6_7C_BHMZA5MinVgqYq" target="_blank" class="card">
-                <img src="line_oa_chat_260308_150328.jpeg">
-                <div style="font-size:11px; font-weight:500;">Ex. block work 📂</div>
-            </a>
+        <h2 style="text-align:center; margin-bottom:20px; color:var(--dark);">💳 ช่องทางชำระเงิน / ติดต่อ</h2>
+        
+        <div class="info-card">
+            <div class="info-icon">🏦</div>
+            <div class="info-content">
+                <div class="info-title">ธนาคารกสิกรไทย (K-Bank)</div>
+                <div class="info-sub">Payment Method</div>
+            </div>
         </div>
+
+        <a href="https://www.facebook.com/fumiko.poko?" class="info-card">
+            <div class="info-icon">📘</div>
+            <div class="info-content">
+                <div class="info-title">Facebook</div>
+                <div class="info-sub">Fumiko Poko</div>
+            </div>
+        </a>
+
+        <a href="https://line.me/R/ti/p/@641sfkjr" class="info-card">
+            <div class="info-icon">📗</div>
+            <div class="info-content">
+                <div class="info-title">LINE</div>
+                <div class="info-sub">@641sfkjr</div>
+            </div>
+        </a>
     </div>
 
     <div class="section">
-        <h2>🤝 กลุ่มในเครือ / Collab</h2>
+        <h2 style="text-align:center; margin-bottom:15px; color:var(--dark);">🤝 กลุ่มในเครือ / Collab</h2>
         <div class="grid">
-            <a href="https://shorturl.at/0hO45" target="_blank" class="card">
+            <a href="https://shorturl.at/0hO45" class="card">
                 <img src="line_oa_chat_260308_151002.jpeg">
                 <div style="font-size:11px;">Rainel V1</div>
             </a>
-            <a href="https://drive.google.com/drive/folders/115OCfCvxXlwbCE3iy2KUMtHuLyVXc4wR" target="_blank" class="card">
+            <a href="https://drive.google.com/drive/folders/115OCfCvxXlwbCE3iy2KUMtHuLyVXc4wR" class="card">
                 <img src="line_oa_chat_260308_150336.jpeg">
                 <div style="font-size:11px;">FumoFumi</div>
             </a>
-            <a href="https://shorturl.asia/Bat15" target="_blank" class="card">
-                <img src="line_oa_chat_260308_150338.jpeg">
-                <div style="font-size:11px;">Constellation</div>
-            </a>
-            <a href="https://drive.google.com/drive/folders/12zwJ3Cr5-iO2Z6UKjF6utgBdSV9kd0Wv" target="_blank" class="card">
-                <img src="line_oa_chat_260308_150339.jpeg">
-                <div style="font-size:11px;">Constellation of star</div>
-            </a>
         </div>
-        <div style="display:flex; justify-content:center; margin-top:15px;">
-            <a href="https://drive.google.com/drive/folders/1AktJ-cZ9CP0kJV_OfECV-930mvbmL81Y" target="_blank" class="card" style="max-width:200px; width:100%;">
-                <img src="line_oa_chat_260308_150340.jpeg">
-                <div style="font-size:11px;">Grufay Fusom</div>
-            </a>
-        </div>
-        <p style="font-size:12px; text-align:center; margin-top:25px; opacity:0.8;">💰 Payment: K Bank (กสิกรไทย)</p>
-    </div>
-
-    <div class="footer">
-        <a href="https://line.me/R/ti/p/@641sfkjr" class="btn-contact-pill">
-            🌙 ติดต่อสอบถาม
-            <div style="font-size: 10px; font-weight: 300; opacity: 0.9; margin-top: 2px;">คลิ๊กเลย!</div>
-        </a>
-
-        <p style="font-size: 14px; font-weight: 500;">Contact • FUMIKO</p>
-        <div class="social-group">
-            <a href="https://www.facebook.com/fumiko.poko?" target="_blank" class="social-btn">Facebook</a>
-            <a href="https://line.me/R/ti/p/@641sfkjr" target="_blank" class="social-btn">Line: @641sfkjr</a>
-        </div>
-        <p style="font-size:10px; opacity:0.4; margin-top:15px;">© 2026 Fumiko Poko | Studio Fumiko ✨🌌</p>
+        <p style="text-align:center; font-size:10px; opacity:0.4; margin-top:30px;">© 2026 Fumiko Poko | Studio Fumiko ✨🌌</p>
     </div>
 
 </div>
