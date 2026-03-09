@@ -27,7 +27,7 @@ body {
     position: relative;
 }
 
-/* --- อิโมจิฟุ้งๆ ลอยทั่วพื้นหลัง --- */
+/* --- อิโมจิพื้นหลังลอยฟุ้งทั่วหน้าจอ --- */
 .bg-emojis {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -60,7 +60,7 @@ body {
     padding: 40px 15px 10px;
 }
 
-/* --- โลโก้พร้อมอิโมจิลอยรอบๆ --- */
+/* --- ส่วนโลโก้พร้อมอิโมจิขึ้น-ลงฟุ้งๆ --- */
 .logo-wrapper {
     position: relative;
     width: 180px; height: 180px;
@@ -71,12 +71,14 @@ body {
 .logo-emoji {
     position: absolute;
     font-size: 24px;
-    animation: orbit 6s infinite linear;
+    filter: drop-shadow(0 0 5px var(--glow));
+    /* ปรับเป็น Animation ขึ้น-ลง ฟุ้งๆ */
+    animation: float-up-down 3s infinite ease-in-out;
 }
 
-@keyframes orbit {
-    from { transform: rotate(0deg) translateX(85px) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(85px) rotate(-360deg); }
+@keyframes float-up-down {
+    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+    50% { transform: translateY(-15px) rotate(10deg); opacity: 1; }
 }
 
 .logo {
@@ -97,7 +99,7 @@ h1 {
     margin-bottom: 5px;
 }
 
-/* --- แถบสถานะ Ready for orders (แบบที่ต้องการ) --- */
+/* --- Ready for orders แบบเส้นประ + จุดกะพริบ --- */
 .status-pill-dashed {
     border: 1.5px dashed var(--main);
     padding: 10px 30px;
@@ -141,7 +143,6 @@ h1 {
 
 h2 { color: var(--dark); font-size: 1.1rem; margin-bottom: 15px; text-align: center; }
 
-/* --- การ์ดเช็คคิวงาน --- */
 .queue-btn {
     display: block;
     background: rgba(255, 255, 255, 0.05);
@@ -167,7 +168,6 @@ h2 { color: var(--dark); font-size: 1.1rem; margin-bottom: 15px; text-align: cen
 }
 .card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; margin-bottom: 8px; }
 
-/* --- ปุ่มติดต่อสั่งงาน (แบบหน้าจอสุดท้าย) --- */
 .footer { text-align: center; }
 
 .btn-contact-pill { 
@@ -206,9 +206,12 @@ h2 { color: var(--dark); font-size: 1.1rem; margin-bottom: 15px; text-align: cen
 
     <div class="header-box">
         <div class="logo-wrapper">
-            <span class="logo-emoji" style="animation-delay: 0s;">✨</span>
-            <span class="logo-emoji" style="animation-delay: -2s;">🌸</span>
-            <span class="logo-emoji" style="animation-delay: -4s;">💫</span>
+            <span class="logo-emoji" style="top: -20px; left: 10px; animation-delay: 0s;">✨</span>
+            <span class="logo-emoji" style="top: 20px; right: -15px; animation-delay: -0.5s;">🌸</span>
+            <span class="logo-emoji" style="bottom: 10px; right: -20px; animation-delay: -1s;">💫</span>
+            <span class="logo-emoji" style="bottom: -15px; left: 30px; animation-delay: -1.5s;">🪐</span>
+            <span class="logo-emoji" style="bottom: 40px; left: -25px; animation-delay: -2s;">🧸</span>
+            
             <div class="logo"><img src="line_oa_chat_260308_150351.jpeg" alt="Logo"></div>
         </div>
         
